@@ -57,7 +57,7 @@ class AuthenticatedGenerator < Rails::Generator::NamedBase
     # model controller
     base_name, @model_controller_class_path, @model_controller_file_path, @model_controller_class_nesting, @model_controller_class_nesting_depth = extract_modules(@model_controller_name)
     @model_controller_class_name_without_nesting, @model_controller_singular_name, @model_controller_plural_name = inflect_names(base_name)
-
+    
     if @model_controller_class_nesting.empty?
       @model_controller_class_name = @model_controller_class_name_without_nesting
     else
@@ -115,6 +115,11 @@ class AuthenticatedGenerator < Rails::Generator::NamedBase
                   File.join('app/models',
                             class_path,
                             "#{file_name}.rb")
+
+      m.template 'role.rb',
+                  File.join('app/models',
+                            class_path,
+                            "role.rb")
 
       m.template 'controller.rb',
                   File.join('app/controllers',
@@ -227,6 +232,10 @@ class AuthenticatedGenerator < Rails::Generator::NamedBase
         m.migration_template 'migration.rb', 'db/migrate', :assigns => {
           :migration_name => "Create#{class_name.pluralize.gsub(/::/, '')}"
         }, :migration_file_name => "create_#{file_path.gsub(/\//, '_').pluralize}"
+        
+        m.migration_template 'role_migration.rb', 'db/migrate', :assigns => {
+          :migration_name => "CreateRoles"
+        }, :migration_file_name => "create_roles"
       end
 
       unless options[:skip_routes]
