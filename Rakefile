@@ -5,11 +5,11 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "insidecode_authentication"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = %Q{Rails plugin for user authentication}
+    gem.description = %Q{This plugin allow you to add user authentication in your Rails application}
     gem.email = "leonardo.marcelino@gmail.com"
-    gem.homepage = "http://github.com/leonardom/insidecode_authentication"
-    gem.authors = ["leo"]
+    gem.homepage = "http://github.com/insidecode/insidecode_authentication"
+    gem.authors = ["Leonardo Marcelino"]
     gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
