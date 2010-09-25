@@ -91,8 +91,9 @@ class AuthenticatedGenerator <  Rails::Generators::NamedBase
 
   def create_migration
     unless options.skip_migration?
-      migration_template 'migration.rb', "db/migrate/create_#{ migration_file_name }.rb"
       migration_template 'role_migration.rb', "db/migrate/create_roles.rb"
+      sleep 0.2
+      migration_template 'migration.rb', "db/migrate/create_#{ migration_file_name }.rb"
     end
   end
 

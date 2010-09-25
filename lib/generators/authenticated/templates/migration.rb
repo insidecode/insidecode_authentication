@@ -12,6 +12,12 @@ class <%= migration_name %> < ActiveRecord::Migration
       t.timestamp
     end
     add_index :<%= table_name %>, :login, :unique => true
+    
+    <%= class_name %>.create( :login => "admin", 
+                    :nome => "Administrador", 
+                    :password => "admin", 
+                    :password_confirmation => "admin",
+                    :role => Role.find_by_name("Administrador") )
   end
 
   def self.down
